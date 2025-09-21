@@ -133,13 +133,13 @@ class SimpleEnsemble(DeepEnsemble):
 
         for estimator in estimators:
             prediction = estimator(inputs, **kwargs)
-            pred = K.expand_dims(prediction, axis=0)
+            pred = np.expand_dims(prediction, axis=0)
             predictions.append(pred)
 
-        predictions = K.concatenate(predictions, axis=0)
+        predictions = np.concatenate(predictions, axis=0)
 
-        mean_pred = K.mean(predictions, axis=0)
-        std_pred = K.std(predictions, axis=0)
+        mean_pred = np.mean(predictions, axis=0)
+        std_pred = np.std(predictions, axis=0)
 
         return mean_pred, std_pred
         
